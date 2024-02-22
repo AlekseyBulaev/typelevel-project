@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- healthcheck route&#10;- skeleton for jobsboard routes">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/responses/FailureResponse.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/HttpApi.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/HttpApi.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" afterDir="false" />
-    </list>
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- jobs endpoint implementation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,11 +137,19 @@
       <option name="project" value="LOCAL" />
       <updated>1708397769462</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Done&#10;- jobs endpoint implementation">
+      <created>1708484810686</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708484810686</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Done&#10;- healthcheck route&#10;- skeleton for jobsboard routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- healthcheck route&#10;- skeleton for jobsboard routes" />
+    <MESSAGE value="Done&#10;- jobs endpoint implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- jobs endpoint implementation" />
   </component>
 </project>

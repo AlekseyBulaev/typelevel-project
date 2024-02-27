@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- logging impl">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- Jobs core module aka &quot;Algebra&quot;">
+      <change afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/playground/JobsPlayground.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +70,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -102,7 +105,7 @@
       <recent name="com.typelevel.jobsboard.http" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.JobsPlayground">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.typelevel.Application" />
       <module name="typelevel-project" />
@@ -116,8 +119,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JobsPlayground" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.typelevel.jobsboard.playground.JobsPlayground" />
+      <module name="typelevel-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.typelevel.jobsboard.playground.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JobsPlayground" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
@@ -155,13 +200,21 @@
       <option name="project" value="LOCAL" />
       <updated>1708577347324</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Done&#10;- Jobs core module aka &quot;Algebra&quot;">
+      <created>1708829983008</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708829983008</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Done&#10;- healthcheck route&#10;- skeleton for jobsboard routes" />
     <MESSAGE value="Done&#10;- jobs endpoint implementation" />
     <MESSAGE value="Done&#10;- logging impl" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- logging impl" />
+    <MESSAGE value="Done&#10;- Jobs core module aka &quot;Algebra&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- Jobs core module aka &quot;Algebra&quot;" />
   </component>
 </project>

@@ -4,10 +4,10 @@ import java.util.UUID
 
 object Job {
   case class Job(
-                  id: UUID, 
-                  date: Long, 
-                  ownerEmail: String, 
-                  jobInfo: JobInfo, 
+                  id: UUID,
+                  date: Long,
+                  ownerEmail: String,
+                  jobInfo: JobInfo,
                   active: Boolean = false
                 )
 
@@ -30,5 +30,22 @@ object Job {
 
   object JobInfo {
     val empty: JobInfo = JobInfo("", "", "", "", false, "", None, None, None, None, None, None, None, None)
+
+    def minimal(
+                 company: String,
+                 title: String,
+                 description: String,
+                 externalUrl: String,
+                 remote: Boolean = false,
+                 location: String,
+               ): JobInfo = JobInfo(
+      company,
+      title,
+      description,
+      externalUrl,
+      remote,
+      location,
+      None, None, None, None, None, None, None, None
+    )
   }
 }

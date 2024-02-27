@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- Jobs core module aka &quot;Algebra&quot;">
-      <change afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/playground/JobsPlayground.scala" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- Running jobs &quot;Algebra&quot;">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Core.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/Application.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/Application.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/HttpApi.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/HttpApi.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708829983008</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Done&#10;- Running jobs &quot;Algebra&quot;">
+      <created>1709002199141</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709002199141</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -215,6 +222,7 @@
     <MESSAGE value="Done&#10;- jobs endpoint implementation" />
     <MESSAGE value="Done&#10;- logging impl" />
     <MESSAGE value="Done&#10;- Jobs core module aka &quot;Algebra&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- Jobs core module aka &quot;Algebra&quot;" />
+    <MESSAGE value="Done&#10;- Running jobs &quot;Algebra&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- Running jobs &quot;Algebra&quot;" />
   </component>
 </project>

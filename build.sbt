@@ -41,5 +41,5 @@ lazy val server = (project in file("."))
       "org.testcontainers" % "testcontainers" % testContainerVersion % Test,
       "org.testcontainers" % "postgresql" % testContainerVersion % Test,
       "ch.qos.logback" % "logback-classic" % logbackVersion % Test
-    ),
+    ), Compile / mainClass := Some("com.typelevel.jobsboard.Application")
   )

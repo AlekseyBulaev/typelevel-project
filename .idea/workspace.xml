@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- A Full Jobs CRUD App">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/config/AppConfig.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/config/PostgresConfig.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Database.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- Adding Database Configuration">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/sql/jobs.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/DoobieSpec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/typelevel-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/typelevel-project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/Application.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/Application.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Core.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Core.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/JobFixture.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/JobFixture.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,7 @@
       <recent name="com.typelevel.jobsboard.http" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="ScalaTest.JobsSpec">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.typelevel.Application" />
       <module name="typelevel-project" />
@@ -119,40 +116,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JobRoutsSpec (1)" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="typelevel-project" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="com.typelevel.jobsboard.http.routes.JobRoutsSpec" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobRoutsSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="typelevel-project" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="com.typelevel.jobsboard.http.routs.JobRoutsSpec" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobsSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="typelevel-project" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="com.typelevel.jobsboard.core.JobsSpec" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="db" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.JobsSpec" />
+        <item itemvalue="ScalaTest.JobRoutsSpec (1)" />
+        <item itemvalue="ScalaTest.JobRoutsSpec" />
         <item itemvalue="Application.Application" />
         <item itemvalue="Application.JobsPlayground" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker-compose.yml.db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709007821191</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Done&#10;- Adding Database Configuration">
+      <created>1709180250836</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709180250836</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -220,6 +242,7 @@
     <MESSAGE value="Done&#10;- Jobs core module aka &quot;Algebra&quot;" />
     <MESSAGE value="Done&#10;- Running jobs &quot;Algebra&quot;" />
     <MESSAGE value="Done&#10;- A Full Jobs CRUD App" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- A Full Jobs CRUD App" />
+    <MESSAGE value="Done&#10;- Adding Database Configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- Adding Database Configuration" />
   </component>
 </project>

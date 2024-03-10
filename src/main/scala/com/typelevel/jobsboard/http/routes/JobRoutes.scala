@@ -2,30 +2,35 @@ package com.typelevel.jobsboard.http.routes
 
 import io.circe.generic.auto.*
 import org.http4s.circe.CirceEntityCodec.*
-
 import cats.*
 import cats.effect.*
 import cats.implicits.*
-
 import org.http4s.*
 import org.http4s.dsl.*
 import org.http4s.dsl.impl.*
 import org.http4s.server.*
-
 import org.typelevel.log4cats.Logger
+
 import java.util.UUID
 import scala.collection.mutable
 import com.typelevel.jobsboard.domain.job.*
 import com.typelevel.jobsboard.core.*
+import com.typelevel.jobsboard.domain.pagination.Pagination
 import com.typelevel.jobsboard.http.responses.*
 import com.typelevel.jobsboard.logging.syntax.*
 import com.typelevel.jobsboard.http.validation.syntax.*
 class JobRoutes[F[_]: Concurrent: Logger] private (jobs: Jobs[F]) extends HttpValidationDsl[F] {
-  private val allJobsRoute: HttpRoutes[F] = HttpRoutes.of[F] { case POST -> Root =>
-    for {
-      jobsList <- jobs.all()
-      resp     <- Ok(jobsList)
-    } yield resp
+
+  object OffsetQueryParam extends OptionalQueryParamDecoderMatcher[Int]("offset")
+  object LimitQueryParam  extends OptionalQueryParamDecoderMatcher[Int]("limit")
+
+  private val allJobsRoute: HttpRoutes[F] = HttpRoutes.of[F] {
+    case req @ POST -> Root :? LimitQueryParam(limit) +& OffsetQueryParam(offset) =>
+      for {
+        filter   <- req.as[JobFilter]
+        jobsList <- jobs.all(filter, Pagination(limit, offset))
+        resp     <- Ok(jobsList)
+      } yield resp
   }
   private val findJobRoute: HttpRoutes[F] = HttpRoutes.of[F] { case GET -> Root / UUIDVar(id) =>
     jobs.find(id).flatMap {

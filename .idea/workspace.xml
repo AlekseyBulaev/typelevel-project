@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- Testing: Jobs">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/validation/syntax.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/validation/validators.scala" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 16 HTTP Payload Validation">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/pagination.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/Job.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/job.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/job.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/job.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/http/routes/JobRoutes.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Core.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/modules/Core.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/playground/JobsPlayground.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/playground/JobsPlayground.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/JobFixture.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/JobFixture.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/http/routes/JobRoutsSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/http/routes/jobRoutsSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +49,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.scala" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -242,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709837495026</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Done&#10;- 16 HTTP Payload Validation">
+      <created>1710036096939</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710036096939</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,6 +262,7 @@
     <MESSAGE value="Done&#10;- A Full Jobs CRUD App" />
     <MESSAGE value="Done&#10;- Adding Database Configuration" />
     <MESSAGE value="Done&#10;- Testing: Jobs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- Testing: Jobs" />
+    <MESSAGE value="Done&#10;- 16 HTTP Payload Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 16 HTTP Payload Validation" />
   </component>
 </project>

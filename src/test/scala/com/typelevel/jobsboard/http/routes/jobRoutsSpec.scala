@@ -17,6 +17,7 @@ import com.typelevel.jobsboard.http.routes.*
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import com.typelevel.Application.Logger
+import com.typelevel.jobsboard.domain.pagination.Pagination
 
 import java.util.UUID
 class jobRoutsSpec
@@ -33,7 +34,7 @@ class jobRoutsSpec
   val jobs: Jobs[IO] = new Jobs[IO] {
     override def create(ownerEmail: String, jobInfo: JobInfo): IO[UUID] =
       IO.pure(NewJobUuid)
-    override def all(): IO[List[Job]] =
+    override def all(jobFilter: JobFilter, pagination: Pagination): IO[List[Job]] =
       IO.pure(List(AwesomeJob))
     override def find(id: UUID): IO[Option[Job]] =
       if (id == AwesomeJobUuid) {

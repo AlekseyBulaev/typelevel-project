@@ -9,6 +9,8 @@ import doobie.postgres.implicits.*
 import com.typelevel.jobsboard.fixtures.*
 import org.scalatest.freespec.AsyncFreeSpec
 import org.scalatest.matchers.should.Matchers
+import org.typelevel.log4cats.Logger
+import org.typelevel.log4cats.slf4j.Slf4jLogger
 
 class JobsSpec
     extends AsyncFreeSpec
@@ -16,6 +18,8 @@ class JobsSpec
     with Matchers
     with DoobieSpec
     with JobFixture {
+  given Logger: Logger[IO] = Slf4jLogger.getLogger[IO]
+
   override val initScript: String = "sql/jobs.sql"
 
   "Jobs 'algebra'" - {

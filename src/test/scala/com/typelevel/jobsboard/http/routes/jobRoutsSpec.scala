@@ -34,8 +34,13 @@ class jobRoutsSpec
   val jobs: Jobs[IO] = new Jobs[IO] {
     override def create(ownerEmail: String, jobInfo: JobInfo): IO[UUID] =
       IO.pure(NewJobUuid)
-    override def all(jobFilter: JobFilter, pagination: Pagination): IO[List[Job]] =
+    def all(): IO[List[Job]] =
       IO.pure(List(AwesomeJob))
+    override def all(jobFilter: JobFilter, pagination: Pagination): IO[List[Job]] =
+      if (jobFilter.remote)
+        IO.pure(List())
+      else
+        IO.pure(List(AwesomeJob))
     override def find(id: UUID): IO[Option[Job]] =
       if (id == AwesomeJobUuid) {
         IO.pure(Some(AwesomeJob))
@@ -77,11 +82,25 @@ class jobRoutsSpec
       for {
         response <- jobRoutes.orNotFound.run(
           Request(method = Method.POST, uri = uri"/jobs")
+            .withEntity(JobFilter())
         )
         retrieved <- response.as[List[Job]]
       } yield {
         response.status shouldBe Status.Ok
         retrieved shouldBe List(AwesomeJob)
+      }
+    }
+
+    "should return all jobs that satisfy filter" in {
+      for {
+        response <- jobRoutes.orNotFound.run(
+          Request(method = Method.POST, uri = uri"/jobs")
+            .withEntity(JobFilter(remote = true))
+        )
+        retrieved <- response.as[List[Job]]
+      } yield {
+        response.status shouldBe Status.Ok
+        retrieved shouldBe List()
       }
     }
 

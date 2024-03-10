@@ -2,6 +2,8 @@ package com.typelevel.jobsboard.core
 
 import cats.effect.*
 import cats.effect.testing.scalatest.AsyncIOSpec
+import com.typelevel.jobsboard.domain.job.*
+import com.typelevel.jobsboard.domain.pagination.*
 import doobie.*
 import doobie.util.*
 import doobie.implicits.*
@@ -110,6 +112,28 @@ class JobsSpec
         } yield numberOfDeletedJobs
 
         program.asserting(_ shouldBe 0)
+      }
+    }
+
+    "should filter remote jobs" in {
+      transactor.use { xa =>
+        val program = for {
+          jobs         <- LiveJobs[IO](xa)
+          filteredJobs <- jobs.all(JobFilter(remote = true), Pagination.default())
+        } yield filteredJobs
+
+        program.asserting(_ shouldBe List())
+      }
+    }
+
+    "should filter jobs by tags" in {
+      transactor.use { xa =>
+        val program = for {
+          jobs <- LiveJobs[IO](xa)
+          filteredJobs <- jobs.all(JobFilter(tags = List("scala", "cats", "zio")), Pagination.default())
+        } yield filteredJobs
+
+        program.asserting(_ shouldBe List(AwesomeJob))
       }
     }
   }

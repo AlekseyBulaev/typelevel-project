@@ -12,14 +12,14 @@ import org.scalatest.freespec.AsyncFreeSpec
 import org.scalatest.matchers.should.Matchers
 import com.typelevel.jobsboard.fixtures.*
 import com.typelevel.jobsboard.core.*
-import com.typelevel.jobsboard.domain.Job.*
+import com.typelevel.jobsboard.domain.job.*
 import com.typelevel.jobsboard.http.routes.*
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import com.typelevel.Application.Logger
 
 import java.util.UUID
-class JobRoutsSpec
+class jobRoutsSpec
     extends AsyncFreeSpec
     with AsyncIOSpec
     with Matchers
@@ -84,7 +84,7 @@ class JobRoutsSpec
       }
     }
 
-    "should create a ew job" in {
+    "should create a new job" in {
       for {
         response <- jobRoutes.orNotFound.run(
           Request(method = Method.POST, uri = uri"/jobs/create")

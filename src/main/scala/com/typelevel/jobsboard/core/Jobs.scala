@@ -3,7 +3,7 @@ package com.typelevel.jobsboard.core
 import cats.*
 import cats.implicits.*
 import cats.effect.*
-import com.typelevel.jobsboard.domain.Job.*
+import com.typelevel.jobsboard.domain.job.*
 import doobie.*
 import doobie.implicits.*
 import doobie.postgres.implicits.*

@@ -1,12 +1,12 @@
 package com.typelevel.jobsboard.playground
 
 import cats.effect.*
-import com.typelevel.jobsboard.domain.Job.JobInfo
+import com.typelevel.jobsboard.domain.job.JobInfo
 import doobie.*
 import doobie.implicits.*
 import doobie.util.*
 import doobie.hikari.HikariTransactor
-import com.typelevel.jobsboard.domain.Job
+import com.typelevel.jobsboard.domain.job
 import com.typelevel.jobsboard.core.*
 
 import scala.io.StdIn

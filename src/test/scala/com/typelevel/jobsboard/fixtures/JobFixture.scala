@@ -1,7 +1,7 @@
 package com.typelevel.jobsboard.fixtures
 
 import cats.syntax.all.*
-import com.typelevel.jobsboard.domain.Job.*
+import com.typelevel.jobsboard.domain.job.*
 import java.util.UUID
 trait JobFixture {
 

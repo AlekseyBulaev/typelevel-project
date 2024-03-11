@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 18 Finishing Tests">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Users.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/sql/users.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/UsersSpec.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/UserFixture.scala" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 19 Users with TDD">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Auth.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/auth.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/security.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710042302340</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Done&#10;- 19 Users with TDD">
+      <created>1710122207909</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710122207909</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -280,6 +284,7 @@
     <MESSAGE value="Done&#10;- 16 HTTP Payload Validation" />
     <MESSAGE value="Done&#10;- 17 Filtering and pagination" />
     <MESSAGE value="Done&#10;- 18 Finishing Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 18 Finishing Tests" />
+    <MESSAGE value="Done&#10;- 19 Users with TDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 19 Users with TDD" />
   </component>
 </project>

@@ -1,18 +1,18 @@
 package com.typelevel.jobsboard.core
 
 import cats.effect.*
-import cats.effect.testing.scalatest.AsyncIOSpec
-import com.typelevel.jobsboard.domain.job.*
-import com.typelevel.jobsboard.domain.pagination.*
 import doobie.*
 import doobie.util.*
 import doobie.implicits.*
 import doobie.postgres.implicits.*
 import com.typelevel.jobsboard.fixtures.*
+import cats.effect.testing.scalatest.AsyncIOSpec
 import org.scalatest.freespec.AsyncFreeSpec
 import org.scalatest.matchers.should.Matchers
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
+import com.typelevel.jobsboard.domain.job.*
+import com.typelevel.jobsboard.domain.pagination.*
 
 class JobsSpec
     extends AsyncFreeSpec

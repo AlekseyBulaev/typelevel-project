@@ -3,18 +3,17 @@ package com.typelevel.jobsboard.core
 import cats.*
 import cats.implicits.*
 import cats.effect.*
-import com.typelevel.jobsboard.domain.job.*
 import doobie.*
 import doobie.util.*
 import doobie.implicits.*
 import doobie.postgres.implicits.*
 import doobie.util.fragment.Fragment
+import org.typelevel.log4cats.Logger
 
 import java.util.UUID
 import com.typelevel.jobsboard.domain.job.*
 import com.typelevel.jobsboard.domain.pagination.*
 import com.typelevel.jobsboard.logging.syntax.*
-import org.typelevel.log4cats.Logger
 
 trait Jobs[F[_]] {
   def create(ownerEmail: String, jobInfo: JobInfo): F[UUID]

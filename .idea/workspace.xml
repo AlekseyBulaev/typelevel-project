@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 17 Filtering and pagination">
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 18 Finishing Tests">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Users.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/sql/users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/UsersSpec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/fixtures/UserFixture.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/pagination.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/pagination.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Jobs.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/http/routes/jobRoutsSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/http/routes/jobRoutsSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +94,7 @@
       <recent name="com.typelevel.jobsboard.http" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.JobsSpec">
+  <component name="RunManager" selected="ScalaTest.UsersSpec">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.typelevel.Application" />
       <module name="typelevel-project" />
@@ -117,19 +121,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JobRoutsSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="typelevel-project" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="projectPathOnTarget" />
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="testKind" value="Class" />
-      <option name="testClassPath" value="com.typelevel.jobsboard.http.routs.JobRoutsSpec" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="JobsSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="typelevel-project" />
       <option name="allowRunningInParallel" value="false" />
@@ -139,6 +130,19 @@
       </option>
       <option name="testKind" value="Class" />
       <option name="testClassPath" value="com.typelevel.jobsboard.core.JobsSpec" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsersSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="typelevel-project" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="testClassPath" value="com.typelevel.jobsboard.core.UsersSpec" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="ScalaTest.UsersSpec" />
         <item itemvalue="ScalaTest.JobsSpec" />
         <item itemvalue="ScalaTest.jobRoutsSpec" />
         <item itemvalue="Application.Application" />
         <item itemvalue="ScalaTest.JobRoutsSpec (1)" />
-        <item itemvalue="ScalaTest.JobRoutsSpec" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710040634896</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Done&#10;- 18 Finishing Tests">
+      <created>1710042302340</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710042302340</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -268,6 +279,7 @@
     <MESSAGE value="Done&#10;- Testing: Jobs" />
     <MESSAGE value="Done&#10;- 16 HTTP Payload Validation" />
     <MESSAGE value="Done&#10;- 17 Filtering and pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 17 Filtering and pagination" />
+    <MESSAGE value="Done&#10;- 18 Finishing Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 18 Finishing Tests" />
   </component>
 </project>

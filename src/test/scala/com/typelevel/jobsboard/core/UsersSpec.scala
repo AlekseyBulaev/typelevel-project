@@ -35,7 +35,7 @@ class UsersSpec
       }
     }
 
-    "should return None if the email doesn't exists" in {
+    "should return None if the email doesn't exist" in {
       transactor.use { xa =>
         val program = for {
           users     <- LiveUsers[IO](xa)
@@ -79,7 +79,7 @@ class UsersSpec
       }
     }
 
-    "should return None when updating a user that doesn't exists" in {
+    "should return None when updating a user that doesn't exist" in {
       transactor.use { xa =>
         val program = for {
           users     <- LiveUsers[IO](xa)
@@ -117,7 +117,7 @@ class UsersSpec
 
     }
 
-    "should NOT delete a user that doesn't exists" in {
+    "should NOT delete a user that doesn't exist" in {
       transactor.use { xa =>
         val program = for {
           users  <- LiveUsers[IO](xa)

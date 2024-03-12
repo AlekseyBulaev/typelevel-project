@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 19 Users with TDD">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/core/Auth.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/auth.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/security.scala" afterDir="false" />
+    <list default="true" id="ea0024c2-a1ca-48f1-9847-d057f472d4d7" name="Changes" comment="Done&#10;- 20 Designing the Auth API">
+      <change afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/playground/PasswordHashingPlayground.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/AuthSpec.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/com/typelevel/jobsboard/domain/user.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/JobsSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/UsersSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/com/typelevel/jobsboard/core/UsersSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,13 +91,13 @@
       <recent name="com.typelevel.jobsboard.http" />
     </key>
   </component>
-  <component name="RunManager" selected="ScalaTest.UsersSpec">
-    <configuration name="Application" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.typelevel.Application" />
+  <component name="RunManager" selected="Application.PasswordHashingPlayground">
+    <configuration name="PasswordHashingPlayground" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.typelevel.jobsboard.playground.PasswordHashingPlayground" />
       <module name="typelevel-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.typelevel.*" />
+          <option name="PATTERN" value="com.typelevel.jobsboard.playground.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,7 +105,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JobRoutsSpec (1)" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="AuthSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="typelevel-project" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
@@ -113,7 +113,7 @@
         <list />
       </option>
       <option name="testKind" value="Class" />
-      <option name="testClassPath" value="com.typelevel.jobsboard.http.routes.JobRoutsSpec" />
+      <option name="testClassPath" value="com.typelevel.jobsboard.core.AuthSpec" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -165,11 +165,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PasswordHashingPlayground" />
+        <item itemvalue="ScalaTest.AuthSpec" />
         <item itemvalue="ScalaTest.UsersSpec" />
         <item itemvalue="ScalaTest.JobsSpec" />
         <item itemvalue="ScalaTest.jobRoutsSpec" />
-        <item itemvalue="Application.Application" />
-        <item itemvalue="ScalaTest.JobRoutsSpec (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710122207909</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Done&#10;- 20 Designing the Auth API">
+      <created>1710169177932</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710169177932</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -285,6 +292,7 @@
     <MESSAGE value="Done&#10;- 17 Filtering and pagination" />
     <MESSAGE value="Done&#10;- 18 Finishing Tests" />
     <MESSAGE value="Done&#10;- 19 Users with TDD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 19 Users with TDD" />
+    <MESSAGE value="Done&#10;- 20 Designing the Auth API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done&#10;- 20 Designing the Auth API" />
   </component>
 </project>

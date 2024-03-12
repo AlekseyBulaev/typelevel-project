@@ -25,7 +25,7 @@ class JobsSpec
   override val initScript: String = "sql/jobs.sql"
 
   "Jobs 'algebra'" - {
-    "should return no job if the given UUID does not exists" in {
+    "should return no job if the given UUID does not exist" in {
       transactor.use { xa =>
         val program = for {
           jobs      <- LiveJobs[IO](xa)

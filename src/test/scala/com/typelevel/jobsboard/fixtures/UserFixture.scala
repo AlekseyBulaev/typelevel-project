@@ -16,7 +16,7 @@ trait UserFixture {
   }
   val John: User = User(
     "email@mail.com",
-    "$2a$10$jY60jL/9Lv6./UHhhj2ZvOSm8PQIiTueC4gmsegrD5K.Yi6/mGY.m",
+    "$2a$10$Sl9N0bw7x1XUab8tJdk5gubNgu4BuDQcXx1nMilWST8EH1h2P5lyu",
     Some("John"),
     Some("Doe"),
     Some("MAANG"),
@@ -26,7 +26,7 @@ trait UserFixture {
   val johnPassword = "email"
   val Bill: User = User(
     "boss@mail.com",
-    "boss",
+    "$2a$10$6sug9p3tF9gktbuuK8W.JOA//eBes1Vp3W/SXMtgQ/aNQUBDWuuHW",
     Some("Bill"),
     Some("Gates"),
     Some("Microsoft"),
@@ -37,14 +37,14 @@ trait UserFixture {
   val NewUser: User = User(
     "newuser@gmail.com",
     "$2a$10$6LQt4xy4LzqQihZiRZGG0eeeDwDCvyvthICXzPKQDQA3C47LtrQFy",
-    Some("John"),
-    Some("Doe"),
+    Some("SOME"),
+    Some("SOME"),
     Some("Some company"),
     Role.RECRUITER
   )
   val UpdatedBill: User = User(
     "boss@mail.com",
-    "$2a$10$PUD6CznGVHntJFsOOeV4NezBgBUs6irV3sC9fa6ufc0xp9VLYyHZ.",
+    "$2a$10$6sug9p3tF9gktbuuK8W.JOA//eBes1Vp3W/SXMtgQ/aNQUBDWuuHW",
     Some("Bill"),
     Some("GATES"),
     Some("Tesla"),

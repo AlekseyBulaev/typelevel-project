@@ -5,11 +5,11 @@ import cats.effect.*
 import tsec.passwordhashers.jca.BCrypt
 import tsec.passwordhashers.PasswordHash
 object PasswordHashingPlayground extends IOApp.Simple {
-  override def run: IO[Unit] = BCrypt.hashpw[IO]("newPassword").flatMap(IO.println) *>
+  override def run: IO[Unit] = BCrypt.hashpw[IO]("boss").flatMap(IO.println) *>
     BCrypt
       .checkpwBool[IO](
         "newPassword",
-        PasswordHash[BCrypt]("$2a$10$M4teYYaVsZmSQGgA9QO8eeTmOXg0gAcaGTmrVkpJCqVTQQVq7ARQW")
+        PasswordHash[BCrypt]("$2a$10$Sl9N0bw7x1XUab8tJdk5gubNgu4BuDQcXx1nMilWST8EH1h2P5lyu")
       )
       .flatMap(IO.println)
 }

@@ -138,6 +138,18 @@ class AuthSpec extends AsyncFreeSpec with AsyncIOSpec with Matchers with UserFix
       program.asserting(_ shouldBe Right(None))
     }
 
+    "changePassword should return Left with an error if the user exists and the password is incorrect" in {
+      val program = for {
+        auth <- LiveAuth[IO](mockedUsers, mockedAuthenticator)
+        maybeUser <- auth.changePassword(
+          John.email,
+          NewPasswordInfo("somePass", "somePass")
+        )
+      } yield maybeUser
+
+      program.asserting(_ shouldBe Left("Invalid password"))
+    }
+
     "changePassword should correctly change password" in {
       val program = for {
         auth   <- LiveAuth[IO](mockedUsers, mockedAuthenticator)

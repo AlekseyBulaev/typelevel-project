@@ -19,7 +19,7 @@ INSERT INTO users (
     role
 ) VALUES (
     'email@mail.com',
-    'email',
+    '$2a$10$Sl9N0bw7x1XUab8tJdk5gubNgu4BuDQcXx1nMilWST8EH1h2P5lyu',
     'John',
     'Doe',
     'MAANG',
@@ -35,7 +35,7 @@ INSERT INTO users (
     role
 ) VALUES (
     'boss@mail.com',
-    'boss',
+    '$2a$10$6sug9p3tF9gktbuuK8W.JOA//eBes1Vp3W/SXMtgQ/aNQUBDWuuHW',
     'Bill',
     'Gates',
     'Microsoft',

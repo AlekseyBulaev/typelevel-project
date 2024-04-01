@@ -20,7 +20,7 @@ import com.typelevel.Application.Logger
 import com.typelevel.jobsboard.domain.pagination.Pagination
 
 import java.util.UUID
-class jobRoutsSpec
+class JobRoutsSpec
     extends AsyncFreeSpec
     with AsyncIOSpec
     with Matchers

@@ -42,6 +42,14 @@ trait UserFixture {
     Some("Some company"),
     Role.RECRUITER
   )
+  val newUser: NewUserInfo = NewUserInfo(
+    "newwmail@mail.com",
+    "newuser",
+    Some("SOME"),
+    Some("SOME"),
+    Some("Some company")
+  )
+  val newUserEmail: String = johnEmail
   val UpdatedBill: User = User(
     "boss@mail.com",
     "$2a$10$6sug9p3tF9gktbuuK8W.JOA//eBes1Vp3W/SXMtgQ/aNQUBDWuuHW",
@@ -49,5 +57,12 @@ trait UserFixture {
     Some("GATES"),
     Some("Tesla"),
     Role.RECRUITER
+  )
+  val existingUser: NewUserInfo = NewUserInfo(
+    email = johnEmail,
+    password = "newPassword",
+    firstName = Some("John"),
+    lastName = Some("Doe"),
+    company = Some("MAANG")
   )
 }

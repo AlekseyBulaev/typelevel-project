@@ -59,7 +59,7 @@ class AuthSpec extends AsyncFreeSpec with AsyncIOSpec with Matchers with UserFix
     "login should return None if the user doesn't exist" in {
       val program = for {
         auth       <- LiveAuth[IO](mockedUsers, mockedAuthenticator)
-        maybeToken <- auth.login(NewUser.email, "password")
+        maybeToken <- auth.login(newUser.email, "password")
       } yield maybeToken
 
       program.asserting(_ shouldBe None)
@@ -130,7 +130,7 @@ class AuthSpec extends AsyncFreeSpec with AsyncIOSpec with Matchers with UserFix
       val program = for {
         auth <- LiveAuth[IO](mockedUsers, mockedAuthenticator)
         maybeUser <- auth.changePassword(
-          NewUser.email,
+          newUser.email,
           NewPasswordInfo("somePassword", "newPassword")
         )
       } yield maybeUser

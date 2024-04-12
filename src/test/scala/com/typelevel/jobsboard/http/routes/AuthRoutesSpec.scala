@@ -85,6 +85,8 @@ class AuthRoutesSpec
         else IO.pure(Left("Invalid password"))
       else IO.pure(Right(None))
 
+    override def delete(email: String): IO[Boolean] = IO.pure(true)
+
     override def authenticator: Authenticator[IO] = mockedAuthenticator
   }
 
@@ -171,7 +173,7 @@ class AuthRoutesSpec
       for {
         jwtToken <- mockedAuthenticator.create(billEmail)
         response <- authRoutes.orNotFound.run(
-          Request(method = Method.POST, uri = uri"/auth/users/password")
+          Request(method = Method.PUT, uri = uri"/auth/users/password")
             .withBearerToken(jwtToken)
             .withEntity(NewPasswordInfo(billPassword, "newPassword"))
         )
@@ -211,6 +213,30 @@ class AuthRoutesSpec
           Request(method = Method.PUT, uri = uri"/auth/users/password")
             .withBearerToken(jwtToken)
             .withEntity(NewPasswordInfo(johnPassword, "newPassword"))
+        )
+      } yield {
+        response.status shouldBe Status.Ok
+      }
+    }
+
+    "Should return a 401 - Unauthorized if a non admin tries to delete the user" in {
+      for {
+        jwtToken <- mockedAuthenticator.create(billEmail)
+        response <- authRoutes.orNotFound.run(
+          Request(method = Method.DELETE, uri = uri"/auth/users/email@mail.com")
+            .withBearerToken(jwtToken)
+        )
+      } yield {
+        response.status shouldBe Status.Unauthorized
+      }
+    }
+
+    "Should return a 200 - OK if an admin tries to delete the user" in {
+      for {
+        jwtToken <- mockedAuthenticator.create(johnEmail)
+        response <- authRoutes.orNotFound.run(
+          Request(method = Method.DELETE, uri = uri"/auth/users/email@mail.com")
+            .withBearerToken(jwtToken)
         )
       } yield {
         response.status shouldBe Status.Ok

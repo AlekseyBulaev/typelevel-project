@@ -15,6 +15,7 @@ import com.typelevel.jobsboard.domain.auth.*
 import com.typelevel.jobsboard.domain.security.*
 import com.typelevel.jobsboard.domain.user.*
 
+import scala.language.implicitConversions
 class AuthRoutes[F[_]: Concurrent: Logger] private (auth: Auth[F]) extends HttpValidationDsl[F] {
   private val authenticator = auth.authenticator
   private val securedHandler: SecuredRequestHandler[F, String, User, JwtToken] =
@@ -71,9 +72,22 @@ class AuthRoutes[F[_]: Concurrent: Logger] private (auth: Auth[F]) extends HttpV
     } yield resp
   }
 
+  // DELETE /auth/users/mail@mail.com
+  private val deleteUserRoute: AuthRoute[F] = {
+    case req @ DELETE -> Root / "users" / email asAuthed user =>
+      auth.delete(email).flatMap {
+        case true  => Ok()
+        case false => NotFound()
+      }
+  }
+
   private val unAuthedRoutes = loginRoute <+> createUserRoute
   private val authedRoutes =
-    securedHandler.liftService(TSecAuthService(changePasswordRoute.orElse(logoutRoute)))
+    securedHandler.liftService(
+      changePasswordRoute.restrictedTo(allRoles) |+|
+        logoutRoute.restrictedTo(allRoles) |+|
+        deleteUserRoute.restrictedTo(adminOnly)
+    )
   val routes: HttpRoutes[F] = Router(
     "/auth" -> (
       unAuthedRoutes <+> authedRoutes

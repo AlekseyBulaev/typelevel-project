@@ -20,6 +20,7 @@ trait Auth[F[_]] {
   ): F[Either[String, Option[User]]]
 
   def authenticator: Authenticator[F]
+  def delete(email: String): F[Boolean]
 }
 
 class LiveAuth[F[_]: Async: Logger] private (
@@ -86,6 +87,8 @@ class LiveAuth[F[_]: Async: Logger] private (
         checkAndUpdate(user, oldPassword, newPassword)
     }
   }
+
+  override def delete(email: String): F[Boolean] = users.delete(email)
 }
 
 object LiveAuth {

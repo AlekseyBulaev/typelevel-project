@@ -7,16 +7,16 @@ import com.typelevel.jobsboard.core.*
 import doobie.util.transactor.Transactor
 import org.typelevel.log4cats.Logger
 
-final class Core[F[_]] private (val jobs: Jobs[F], val auth: Auth[F])
+final class Core[F[_]] private (val jobs: Jobs[F], val users: Users[F], val auth: Auth[F])
 
 object Core {
 
-  def apply[F[_]: Async: Logger](xa: Transactor[F])(securityConfig: SecurityConfig): Resource[F, Core[F]] = {
+  def apply[F[_]: Async: Logger](xa: Transactor[F]): Resource[F, Core[F]] = {
     val coreF = for {
       jobs  <- LiveJobs[F](xa)
       users <- LiveUsers[F](xa)
-      auth  <- LiveAuth[F](users)(securityConfig)
-    } yield new Core[F](jobs = jobs, auth = auth)
+      auth  <- LiveAuth[F](users)
+    } yield new Core[F](jobs = jobs, users = users, auth = auth)
 
     Resource.eval(coreF)
   }

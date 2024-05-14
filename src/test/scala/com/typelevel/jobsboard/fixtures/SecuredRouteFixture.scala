@@ -2,7 +2,7 @@ package com.typelevel.jobsboard.fixtures
 
 import cats.data.*
 import cats.effect.*
-import tsec.authentication.{IdentityStore, JWTAuthenticator}
+import tsec.authentication.{IdentityStore, JWTAuthenticator, SecuredRequestHandler}
 import tsec.jws.mac.JWTMac
 import tsec.mac.jca.HMACSHA256
 import com.typelevel.jobsboard.domain.user.*
@@ -38,4 +38,6 @@ trait SecuredRouteFixture extends UserFixture {
       val jwtString = JWTMac.toEncodedString[IO, HMACSHA256](a.jwt)
       Authorization(Credentials.Token(AuthScheme.Bearer, jwtString))
     }
+
+  given securedHandler: SecuredHandler[IO] = SecuredRequestHandler(mockedAuthenticator)
 }

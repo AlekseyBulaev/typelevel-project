@@ -17,6 +17,9 @@ object security {
   // type aliases for http routes
   type AuthRBAC[F[_]]       = BasicRBAC[F, Role, User, JwtToken]
   type SecuredHandler[F[_]] = SecuredRequestHandler[F, String, User, JwtToken]
+  object SecuredHandler {
+    def apply[F[_]](using handler: SecuredHandler[F]): SecuredHandler[F] = handler
+  }
   given authRole[F[_]: Applicative]: AuthorizationInfo[F, Role, User] with {
     override def fetchInfo(u: User): F[Role] = u.role.pure[F]
   }

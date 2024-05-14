@@ -24,10 +24,9 @@ import com.typelevel.jobsboard.domain.security.AuthRoute
 import com.typelevel.jobsboard.http.responses.*
 import com.typelevel.jobsboard.logging.syntax.*
 import com.typelevel.jobsboard.http.validation.syntax.*
-class JobRoutes[F[_]: Concurrent: Logger] private (jobs: Jobs[F], authenticator: Authenticator[F])
+class JobRoutes[F[_]: Concurrent: Logger: SecuredHandler] private (jobs: Jobs[F])
     extends HttpValidationDsl[F] {
-  private val securedHandler: SecuredHandler[F] =
-    SecuredRequestHandler(authenticator)
+
   object OffsetQueryParam extends OptionalQueryParamDecoderMatcher[Int]("offset")
   object LimitQueryParam  extends OptionalQueryParamDecoderMatcher[Int]("limit")
 
@@ -80,7 +79,7 @@ class JobRoutes[F[_]: Concurrent: Logger] private (jobs: Jobs[F], authenticator:
 
   private val unauthenticatedRoutes: HttpRoutes[F] = allJobsRoute <+> findJobRoute
 
-  val authedRoutes: HttpRoutes[F] = securedHandler.liftService(
+  val authedRoutes: HttpRoutes[F] = SecuredHandler[F].liftService(
     createJobRoute.restrictedTo(allRoles) |+|
       updateJobRoute.restrictedTo(allRoles) |+|
       deleteJobRoute.restrictedTo(allRoles)
@@ -92,6 +91,5 @@ class JobRoutes[F[_]: Concurrent: Logger] private (jobs: Jobs[F], authenticator:
 }
 
 object JobRoutes {
-  def apply[F[_]: Concurrent: Logger](jobs: Jobs[F], authenticator: Authenticator[F]) =
-    new JobRoutes[F](jobs, authenticator)
+  def apply[F[_]: Concurrent: Logger: SecuredHandler](jobs: Jobs[F]) = new JobRoutes[F](jobs)
 }

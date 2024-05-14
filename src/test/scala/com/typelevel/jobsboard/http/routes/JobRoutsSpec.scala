@@ -60,7 +60,7 @@ class JobRoutsSpec
       }
   }
 
-  val jobRoutes: HttpRoutes[IO] = JobRoutes[IO](jobs, mockedAuthenticator).routes
+  val jobRoutes: HttpRoutes[IO] = JobRoutes[IO](jobs).routes
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   // tests

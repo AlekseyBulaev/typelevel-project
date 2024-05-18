@@ -66,6 +66,10 @@ class AuthRoutesSpec
       else IO.pure(Right(None))
 
     override def delete(email: String): IO[Boolean] = IO.pure(true)
+
+    override def sendPasswordRecoveryToken(email: String): IO[Unit] = IO.unit
+
+    override def recoverPasswordFromToken(email: String, token: String, newPassword: String): IO[Boolean] = IO.pure(true)
   }
 
   val authRoutes: HttpRoutes[IO] = AuthRoutes[IO](mockedAuth, mockedAuthenticator).routes

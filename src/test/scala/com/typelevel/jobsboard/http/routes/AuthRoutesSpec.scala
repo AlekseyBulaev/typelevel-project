@@ -17,7 +17,7 @@ import com.typelevel.jobsboard.fixtures.*
 import com.typelevel.jobsboard.core.*
 import com.typelevel.jobsboard.http.routes.*
 import com.typelevel.Application.Logger
-import com.typelevel.jobsboard.domain.auth.{LoginInfo, NewPasswordInfo}
+import com.typelevel.jobsboard.domain.auth.{ForgotPasswordInfo, LoginInfo, NewPasswordInfo, RecoverPasswordInfo}
 import com.typelevel.jobsboard.domain.security.{Authenticator, JwtToken}
 import com.typelevel.jobsboard.domain.user.User
 import com.typelevel.jobsboard.domain.{auth, user}
@@ -41,9 +41,10 @@ class AuthRoutesSpec
   //////////////////////////////////////////////////////////////////////////////////////////////
   // prep
   //////////////////////////////////////////////////////////////////////////////////////////////
-  val logger: Logger[IO] = Slf4jLogger.getLogger[IO]
+  val logger: Logger[IO]   = Slf4jLogger.getLogger[IO]
+  val mockedAuth: Auth[IO] = probedAuth(None)
 
-  val mockedAuth: Auth[IO] = new Auth[IO] {
+  def probedAuth(userMap: Option[Ref[IO, Map[String, String]]]): Auth[IO] = new Auth[IO] {
     override def login(email: String, password: String): IO[Option[User]] =
       if (email == johnEmail && password == johnPassword)
         IO(Some(John))
@@ -67,9 +68,28 @@ class AuthRoutesSpec
 
     override def delete(email: String): IO[Boolean] = IO.pure(true)
 
-    override def sendPasswordRecoveryToken(email: String): IO[Unit] = IO.unit
+    override def sendPasswordRecoveryToken(email: String): IO[Unit] =
+      userMap
+        .traverse { userMapRef =>
+          userMapRef.modify { userMap =>
+            (userMap + (email -> "abc123"), ())
+          }
+        }
+        .map(_ => ())
 
-    override def recoverPasswordFromToken(email: String, token: String, newPassword: String): IO[Boolean] = IO.pure(true)
+    override def recoverPasswordFromToken(
+        email: String,
+        token: String,
+        newPassword: String
+    ): IO[Boolean] = userMap
+      .traverse { userMapRef =>
+        userMapRef.get
+          .map { userMap =>
+            userMap.get(email).filter(_ == token)
+          }
+          .map(_.nonEmpty)
+      }
+      .map(_.getOrElse(false))
   }
 
   val authRoutes: HttpRoutes[IO] = AuthRoutes[IO](mockedAuth, mockedAuthenticator).routes
@@ -219,5 +239,53 @@ class AuthRoutesSpec
         response.status shouldBe Status.Ok
       }
     }
+
+    "Should return a 200 - OK when resetting a password and an email should be triggered" in {
+      for {
+        userMapRef <- Ref.of[IO, Map[String, String]](Map())
+        auth       <- IO(probedAuth(Some(userMapRef)))
+        routes     <- IO(AuthRoutes(auth, mockedAuthenticator).routes)
+        response <- routes.orNotFound.run(
+          Request(method = Method.POST, uri = uri"/auth/reset")
+            .withEntity(ForgotPasswordInfo(johnEmail))
+        )
+        userMap <- userMapRef.get
+      } yield {
+        response.status shouldBe Status.Ok
+        userMap should contain key johnEmail
+      }
+    }
+
+    "Should return a 200 - OK when recovering a password for a correct user token combination" in {
+      for {
+        userMapRef <- Ref.of[IO, Map[String, String]](Map(johnEmail -> "abc123"))
+        auth <- IO(probedAuth(Some(userMapRef)))
+        routes <- IO(AuthRoutes(auth, mockedAuthenticator).routes)
+        response <- routes.orNotFound.run(
+          Request(method = Method.POST, uri = uri"/auth/recover")
+            .withEntity(RecoverPasswordInfo(johnEmail, "abc123", "newPassword"))
+        )
+        userMap <- userMapRef.get
+      } yield {
+        response.status shouldBe Status.Ok
+        userMap should contain key johnEmail
+      }
+    }
+
+    "Should return a 403 - Forbidden when recovering a password for a usaer with an incorrect token" in {
+      for {
+        userMapRef <- Ref.of[IO, Map[String, String]](Map(johnEmail -> "abc123"))
+        auth <- IO(probedAuth(Some(userMapRef)))
+        routes <- IO(AuthRoutes(auth, mockedAuthenticator).routes)
+        response <- routes.orNotFound.run(
+          Request(method = Method.POST, uri = uri"/auth/recover")
+            .withEntity(RecoverPasswordInfo(johnEmail, "wrongToken", "newPassword"))
+        )
+        userMap <- userMapRef.get
+      } yield {
+        response.status shouldBe Status.Forbidden
+      }
+    }
+
   }
 }

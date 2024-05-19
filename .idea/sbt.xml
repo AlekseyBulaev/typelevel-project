@@ -8,7 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/common/js" />
+            <option value="$PROJECT_DIR$/common/jvm" />
+            <option value="$PROJECT_DIR$/common/shared" />
             <option value="$PROJECT_DIR$/project" />
+            <option value="$PROJECT_DIR$/server" />
           </set>
         </option>
         <option name="sbtVersion" value="1.9.8" />

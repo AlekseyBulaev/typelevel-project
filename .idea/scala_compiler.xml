@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="typelevel-project" />
+    <option name="incrementalityType" value="SBT" />
+    <profile name="sbt 1" modules="coreJVM,server,typelevel-project" />
+    <profile name="sbt 2" modules="app">
+      <parameters>
+        <parameter value="-scalajs" />
+        <parameter value="-Xsemanticdb" />
+        <parameter value="-semanticdb-target" />
+        <parameter value="$PROJECT_DIR$/app/target/scala-3.2.1/meta" />
+      </parameters>
+    </profile>
+    <profile name="sbt 3" modules="coreJS">
+      <parameters>
+        <parameter value="-scalajs" />
+      </parameters>
+    </profile>
   </component>
 </project>

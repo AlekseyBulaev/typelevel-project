@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common-sources.iml" filepath="$PROJECT_DIR$/.idea/modules/common-sources.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/coreJS.iml" filepath="$PROJECT_DIR$/.idea/modules/coreJS.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/coreJVM.iml" filepath="$PROJECT_DIR$/.idea/modules/coreJVM.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/server.iml" filepath="$PROJECT_DIR$/.idea/modules/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/typelevel-project.iml" filepath="$PROJECT_DIR$/.idea/modules/typelevel-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/typelevel-project-build.iml" filepath="$PROJECT_DIR$/.idea/modules/typelevel-project-build.iml" />
     </modules>

@@ -32,8 +32,10 @@ class PlaygroundApp extends TyrianApp[PlaygroundApp.Msg, PlaygroundApp.Model] {
   // model can change by receiving messages
   // model => message => (new model, new command)
   // update triggered whenever we get a new message
-  override def update(model: Model): Msg => (Model, Cmd[IO, Msg]) = {case Increment(amount) =>
-    (model.copy(count = model.count + amount), Logger.consoleLog[IO]("Changing count by " + amount))
+  override def update(model: Model): Msg => (Model, Cmd[IO, Msg]) = {
+    case Increment(amount) =>
+      (model.copy(count = model.count + amount), Logger.consoleLog[IO]("Changing count by " + amount))
+    case _ => (model, Cmd.None)
   }
 
   // view triggered whenever the model changes

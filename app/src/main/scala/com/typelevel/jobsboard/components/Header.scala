@@ -6,16 +6,17 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.*
 
 import com.typelevel.jobsboard.core.*
+import com.typelevel.jobsboard.pages.Page.Urls
 object Header {
   // public API
-  def view(): Any =
+  def view() =
     div(`class` := "header-container")(
       renderLogo(),
       div(`class` := "header-nav")(
         ul(`class` := "header-links")(
-          renderNavLink("Jobs", "/jobs"),
-          renderNavLink("Login", "/login"),
-          renderNavLink("Sign up", "/signup")
+          renderNavLink("Jobs", Urls.JOBS),
+          renderNavLink("Login", Urls.LOGIN),
+          renderNavLink("Sign up", Urls.SIGNUP)
         )
       )
     )

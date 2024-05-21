@@ -4,6 +4,7 @@ import cats.*
 import cats.effect.*
 import com.typelevel.jobsboard.core.Users
 import com.typelevel.jobsboard.domain.user.*
+import com.typelevel.jobsboard.domain.auth.*
 
 trait UserFixture {
   val mockedUsers: Users[IO] = new Users[IO] {

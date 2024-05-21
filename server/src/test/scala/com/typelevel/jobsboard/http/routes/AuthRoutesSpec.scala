@@ -50,7 +50,7 @@ class AuthRoutesSpec
         IO(Some(John))
       else IO.pure(None)
 
-    override def signUp(newUserInfo: user.NewUserInfo): IO[Option[user.User]] =
+    override def signUp(newUserInfo: auth.NewUserInfo): IO[Option[user.User]] =
       if (newUserInfo.email == johnEmail)
         IO.pure(None)
       else

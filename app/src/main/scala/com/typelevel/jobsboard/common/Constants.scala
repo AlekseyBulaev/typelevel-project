@@ -8,5 +8,6 @@ object Constants {
     object Endoints {
         val root = "http://localhost:8080"
         val signup = s"$root/api/auth/users"
+        val login = s"$root/api/auth/login"
     }
 }

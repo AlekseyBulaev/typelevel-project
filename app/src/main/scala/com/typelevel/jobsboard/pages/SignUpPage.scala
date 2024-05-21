@@ -87,7 +87,7 @@ final case class SignUpPage(
         renderInput("Last Name", "lastname", "text", true, UpdateLastName(_)),
         renderInput("Company", "company", "text", true, UpdateCompany(_)),
         // button
-        button(`type` := "button", onClick(AttemptSignUp))(" Sign Up")
+        button(`type` := "button", onClick(AttemptSignUp))("Sign Up")
       ),
       status.map(s => div(s.message)).getOrElse(div())
     )

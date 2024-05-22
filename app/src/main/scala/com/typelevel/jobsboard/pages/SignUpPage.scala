@@ -11,6 +11,7 @@ import io.circe.generic.auto.*
 import com.typelevel.jobsboard.common.*
 import com.typelevel.jobsboard.domain.auth.*
 
+import com.typelevel.jobsboard.*
 import java.net.http.HttpResponse
 
 // form
@@ -36,9 +37,9 @@ final case class SignUpPage(
 
   import SignUpPage.*
 
-  override def initCmd: Cmd[IO, Page.Msg] = Cmd.None // TODO
+  override def initCmd: Cmd[IO, App.Msg] = Cmd.None // TODO
 
-  override def update(msg: Page.Msg): (Page, Cmd[IO, Page.Msg]) = msg match {
+  override def update(msg: App.Msg): (Page, Cmd[IO, App.Msg]) = msg match {
     case UpdateEmail(e) => (this.copy(email = e), Cmd.None)
     case UpdatePassword(p) => (this.copy(password = p), Cmd.None)
     case UpdateConfirmPassword(cp) => (this.copy(confirmPassword = cp), Cmd.None)
@@ -61,7 +62,7 @@ final case class SignUpPage(
     case _ => (this, Cmd.None)
   }
 
-  override def view(): Html[Page.Msg] =
+  override def view(): Html[App.Msg] =
     div(`class` := "form-section")(
       // title: Sign Up
       div(`class` := "top-section")(
@@ -119,7 +120,7 @@ final case class SignUpPage(
 }
 
 object SignUpPage {
-  trait Msg extends Page.Msg
+  trait Msg extends App.Msg
 
   case class UpdateEmail(email: String) extends Msg
 

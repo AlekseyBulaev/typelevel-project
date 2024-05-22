@@ -4,12 +4,15 @@ import cats.effect.*
 import tyrian.*
 
 import com.typelevel.jobsboard.pages.*
+import com.typelevel.jobsboard.*
+
 object Page {
-  trait Msg
+  trait Msg extends App.Msg
 
   enum StatusKind {
     case SUCCESS, ERROR, LOADING
   }
+
   final case class Status(message: String, kind: StatusKind)
 
   object Urls {
@@ -23,6 +26,7 @@ object Page {
   }
 
   import Urls.*
+
   def get(location: String): Page = location match {
     case `LOGIN` => LoginPage()
     case `SIGNUP` => SignUpPage()
@@ -34,17 +38,20 @@ object Page {
   }
 
 }
+
 abstract class Page {
+
   import Page.*
+
   // API
   // send a command upon instantiating
-  def initCmd: Cmd[IO, Msg]
+  def initCmd: Cmd[IO, App.Msg]
 
   // update
-  def update(msg: Msg): (Page, Cmd[IO, Msg])
+  def update(msg: App.Msg): (Page, Cmd[IO, App.Msg])
 
   // render
-  def view(): Html[Msg]
+  def view(): Html[App.Msg]
 }
 
 // login page

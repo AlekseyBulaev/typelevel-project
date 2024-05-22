@@ -4,8 +4,13 @@ import tyrian.*
 import cats.effect.*
 import com.typelevel.jobsboard.App
 import fs2.dom.History
-case class Router private (location: String, history: History[IO, String]) {
+
+import com.typelevel.jobsboard.*
+
+case class Router private(location: String, history: History[IO, String]) {
+
   import Router.*
+
   def update(msg: Msg): (Router, Cmd[IO, Msg]) = msg match {
     case ChangeLocation(newLocation, browserTriggered) =>
       if (location == newLocation) (this, Cmd.None)
@@ -23,10 +28,13 @@ case class Router private (location: String, history: History[IO, String]) {
     history.pushState(location, location)
   }
 }
+
 object Router {
-  trait Msg
+  trait Msg extends App.Msg
+
   case class ChangeLocation(location: String, browserTriggered: Boolean = false) extends Msg
-  case class ExternalRedirect(location: String)                                  extends Msg
+
+  case class ExternalRedirect(location: String) extends Msg
 
   def startAt[M](initialLocation: String): (Router, Cmd[IO, M]) =
     val router = Router(initialLocation, History[IO, String])

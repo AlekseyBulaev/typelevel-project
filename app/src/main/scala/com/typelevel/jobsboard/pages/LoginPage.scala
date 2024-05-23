@@ -38,7 +38,7 @@ final case class LoginPage(
       else if (password.isEmpty) (setErrorStatus("Email is empty"), Cmd.None)
       else (this, Commands.login(LoginInfo(email, password)))
     case LoginError(error) => (setErrorStatus(error), Cmd.None)
-    case LoginSuccess(token) => (setSuccessStatus("Success!"), Cmd.Emit(Session.SetToken(email, token)))
+    case LoginSuccess(token) => (setSuccessStatus("Success!"), Cmd.Emit(Session.SetToken(email, token, isNewUser = true)))
     case _ => (this, Cmd.None)
   }
 

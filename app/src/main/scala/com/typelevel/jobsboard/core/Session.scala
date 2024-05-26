@@ -2,6 +2,7 @@ package com.typelevel.jobsboard.core
 
 import tyrian.*
 import cats.effect.IO
+import tyrian.http.*
 import tyrian.cmds.Logger
 import org.scalajs.dom.document
 
@@ -9,7 +10,6 @@ import scala.scalajs.js.{Date, native}
 import com.typelevel.jobsboard.*
 import com.typelevel.jobsboard.common.*
 import com.typelevel.jobsboard.pages.*
-import tyrian.http.{HttpError, Method, Response}
 
 
 case class Session(email: Option[String] = None, token: Option[String] = None) {
@@ -19,13 +19,21 @@ case class Session(email: Option[String] = None, token: Option[String] = None) {
   def update(msg: Msg): (Session, Cmd[IO, App.Msg]) = msg match
     case SetToken(e, t, isNewUser) =>
       val cookieCmd = Commands.setAllSessionCookies(e, t, isNewUser)
-      val routingCmd = if (isNewUser) Cmd.Emit(Router.ChangeLocation(Page.Urls.HOME)) else Cmd.None
+      val routingCmd = if (isNewUser)
+        Cmd.Emit(Router.ChangeLocation(Page.Urls.HOME)) // new user
+      else
+      // check whether the token is still valid on the server
+        Commands.checkToken
       (this.copy(Some(e), Some(t)), cookieCmd |+| routingCmd)
+    // check token action
+    case CheckToken => (this, Commands.checkToken)
+    case KeepToken => (this, Cmd.None)
+    // logout action
     case Logout =>
       // trigger an AUTHORIZED http request
       val cmd = token.map(_ => Commands.logout).getOrElse(Cmd.None)
       (this, cmd)
-    case LogoutSuccess =>
+    case LogoutSuccess | InvalidateToken =>
       (this.copy(email = None, token = None), Commands.clearAllSessionCookies() |+| Cmd.Emit(Router.ChangeLocation(Page.Urls.HOME)))
 
   def initCmd: Cmd[IO, Msg] = {
@@ -43,6 +51,14 @@ object Session {
 
   case class SetToken(email: String, token: String, isNewUser: Boolean = false) extends Msg
 
+  // check the token
+  case object CheckToken extends Msg
+
+  case object KeepToken extends Msg
+
+  case object InvalidateToken extends Msg
+
+  // logout action
   case object Logout extends Msg
 
   case object LogoutSuccess extends Msg
@@ -60,11 +76,23 @@ object Session {
       override val onSuccess: Response => Msg = _ => LogoutSuccess
       override val onError: HttpError => Msg = _ => LogoutFailure
     }
+
+    val checkToken = new Endpoint[Msg] {
+      override val location: String = Constants.endpoints.checkToken
+      override val method: Method = Method.Get
+      override val onSuccess: Response => Msg = response => response.status match {
+        case Status(200, _) => KeepToken
+        case _ => InvalidateToken
+      }
+      override val onError: HttpError => Msg = _ => InvalidateToken
+    }
   }
 
   object Commands {
 
     def logout: Cmd[IO, Msg] = Endpoints.logout.callAuthorized()
+
+    def checkToken: Cmd[IO, Msg] = Endpoints.checkToken.callAuthorized()
 
     def setSessionCookie(name: String, value: String, isFresh: Boolean = false): Cmd[IO, Msg] =
       Cmd.SideEffect[IO] {

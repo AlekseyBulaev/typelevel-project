@@ -8,17 +8,25 @@ import org.scalajs.dom.document
 import scala.scalajs.js.{Date, native}
 import com.typelevel.jobsboard.*
 import com.typelevel.jobsboard.common.*
+import com.typelevel.jobsboard.pages.*
+import tyrian.http.{HttpError, Method, Response}
 
 
 case class Session(email: Option[String] = None, token: Option[String] = None) {
 
   import Session.*
 
-  def update(msg: Msg): (Session, Cmd[IO, Msg]) = msg match
-    case SetToken(e, t, isNewUser) => (
-      this.copy(Some(e), Some(t)),
-      Commands.setAllSessionCookies(e,t,isNewUser)
-      )
+  def update(msg: Msg): (Session, Cmd[IO, App.Msg]) = msg match
+    case SetToken(e, t, isNewUser) =>
+      val cookieCmd = Commands.setAllSessionCookies(e, t, isNewUser)
+      val routingCmd = if (isNewUser) Cmd.Emit(Router.ChangeLocation(Page.Urls.HOME)) else Cmd.None
+      (this.copy(Some(e), Some(t)), cookieCmd |+| routingCmd)
+    case Logout =>
+      // trigger an AUTHORIZED http request
+      val cmd = token.map(_ => Commands.logout).getOrElse(Cmd.None)
+      (this, cmd)
+    case LogoutSuccess =>
+      (this.copy(email = None, token = None), Commands.clearAllSessionCookies() |+| Cmd.Emit(Router.ChangeLocation(Page.Urls.HOME)))
 
   def initCmd: Cmd[IO, Msg] = {
     val maybeCommand = for {
@@ -35,7 +43,29 @@ object Session {
 
   case class SetToken(email: String, token: String, isNewUser: Boolean = false) extends Msg
 
+  case object Logout extends Msg
+
+  case object LogoutSuccess extends Msg
+
+  case object LogoutFailure extends Msg
+
+  def isActive: Boolean = getUserToken().nonEmpty
+
+  def getUserToken(): Option[String] = getCookie(Constants.cookies.token)
+
+  object Endpoints {
+    val logout: Endpoint[Msg] = new Endpoint[Msg] {
+      override val location: String = Constants.endpoints.logout
+      override val method: Method = Method.Post
+      override val onSuccess: Response => Msg = _ => LogoutSuccess
+      override val onError: HttpError => Msg = _ => LogoutFailure
+    }
+  }
+
   object Commands {
+
+    def logout: Cmd[IO, Msg] = Endpoints.logout.callAuthorized()
+
     def setSessionCookie(name: String, value: String, isFresh: Boolean = false): Cmd[IO, Msg] =
       Cmd.SideEffect[IO] {
         if (getCookie(name).isEmpty || isFresh)
@@ -44,7 +74,7 @@ object Session {
 
     def setAllSessionCookies(email: String, token: String, isFresh: Boolean = false): Cmd[IO, Msg] =
       setSessionCookie(Constants.cookies.email, email, isFresh) |+|
-      setSessionCookie(Constants.cookies.token, token, isFresh)
+        setSessionCookie(Constants.cookies.token, token, isFresh)
 
     def clearSessionCookie(name: String): Cmd[IO, Msg] =
       Cmd.SideEffect[IO] {
@@ -53,8 +83,9 @@ object Session {
 
     def clearAllSessionCookies(): Cmd[IO, Msg] =
       clearSessionCookie(Constants.cookies.email) |+|
-      clearSessionCookie(Constants.cookies.token)
+        clearSessionCookie(Constants.cookies.token)
   }
+
   private def getCookie(name: String): Option[String] = document.cookie
     .split(";")
     .map(_.trim)

@@ -146,7 +146,7 @@ object SignUpPage {
 
   object Endpoints {
     val signup: Endpoint[Msg] = new Endpoint[Msg] {
-      override val location: String = Constants.Endoints.signup
+      override val location: String = Constants.endpoints.signup
       override val method: Method = Method.Post
       override val onSuccess: Response => Msg = response => response.status match {
         case Status(201, _) => SignUpSuccess("Success!")
@@ -165,7 +165,7 @@ object SignUpPage {
 
   object Commands {
     def signUp(newUserInfo: NewUserInfo): Cmd[IO, Msg] =
-      Endpoints.signup.call(newUserInfo)
+      Endpoints.signup.internalCall(newUserInfo)
   }
 
 }

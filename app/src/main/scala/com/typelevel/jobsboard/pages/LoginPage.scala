@@ -46,7 +46,7 @@ final case class LoginPage(
     div(`class` := "form-section")(
       // title: Sign Up
       div(`class` := "top-section")(
-        h1("Sign Up")
+        h1("Log In")
       ),
       // form
       form(
@@ -113,7 +113,7 @@ object LoginPage {
 
   object Endpoints {
     val login: Endpoint[Msg] = new Endpoint[Msg] {
-      override val location: String = Constants.Endoints.login
+      override val location: String = Constants.endpoints.login
       override val method: Method = Method.Post
       override val onError: HttpError => Msg =
         e => LoginError(e.toString)
@@ -126,6 +126,6 @@ object LoginPage {
   }
 
   object Commands {
-    def login(loginInfo: LoginInfo): Cmd[IO, Msg] = Endpoints.login.call(loginInfo)
+    def login(loginInfo: LoginInfo): Cmd[IO, Msg] = Endpoints.login.internalCall(loginInfo)
   }
 }
